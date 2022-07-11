@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import RealmSwift
 
 struct SomeData{
     var data : String?
@@ -21,4 +22,9 @@ struct Products:Codable{
 
 struct ProductData:Codable{
     var data:[Products]
+}
+
+//MODEL:
+class ProductDB:Object{
+    @objc dynamic var name:String?
 }

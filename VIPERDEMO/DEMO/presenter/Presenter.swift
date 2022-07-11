@@ -9,10 +9,15 @@ import Foundation
 
 protocol PresenterProtocol{
     func didFinishGettingDataFromPresenter(data:[Products])
+    func didSavedToRealm(realMSaved:String)
 }
 
 
 class Presenter:InteractorProtocol{
+    func didSaveToRealm(name: String) {
+        presenter?.didSavedToRealm(realMSaved: name)
+    }
+    
    
     var interactor : Interactor?
     

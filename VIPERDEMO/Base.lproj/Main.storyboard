@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Mo8-1N-lgU">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="787"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="100" id="OMX-31-0dF" customClass="TableViewCell" customModule="VIPERDEMO" customModuleProvider="target">
@@ -90,14 +90,28 @@
                                     <outlet property="delegate" destination="Csf-od-xTp" id="mHt-qT-xDF"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ewx-YR-Y0U">
+                                <rect key="frame" x="0.0" y="831" width="414" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <connections>
+                                    <action selector="reloadBtnClicked:" destination="Csf-od-xTp" eventType="touchUpInside" id="ayE-aa-Xyw"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="xc0-M1-2CT"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Mo8-1N-lgU" firstAttribute="leading" secondItem="xc0-M1-2CT" secondAttribute="leading" id="40t-C3-7r0"/>
-                            <constraint firstItem="xc0-M1-2CT" firstAttribute="bottom" secondItem="Mo8-1N-lgU" secondAttribute="bottom" id="4QI-Co-YPe"/>
+                            <constraint firstItem="xc0-M1-2CT" firstAttribute="trailing" secondItem="ewx-YR-Y0U" secondAttribute="trailing" id="4xd-wh-npd"/>
+                            <constraint firstItem="xc0-M1-2CT" firstAttribute="trailing" secondItem="ewx-YR-Y0U" secondAttribute="trailing" id="85V-Uu-Fb3"/>
                             <constraint firstItem="xc0-M1-2CT" firstAttribute="trailing" secondItem="Mo8-1N-lgU" secondAttribute="trailing" id="Hhi-59-oDX"/>
+                            <constraint firstItem="xc0-M1-2CT" firstAttribute="bottom" secondItem="ewx-YR-Y0U" secondAttribute="bottom" id="Jic-ib-bFt"/>
+                            <constraint firstItem="ewx-YR-Y0U" firstAttribute="top" secondItem="Mo8-1N-lgU" secondAttribute="bottom" id="K2G-zR-wWS"/>
+                            <constraint firstItem="ewx-YR-Y0U" firstAttribute="leading" secondItem="xc0-M1-2CT" secondAttribute="leading" id="QSk-9l-Ajd"/>
                             <constraint firstItem="Mo8-1N-lgU" firstAttribute="top" secondItem="xc0-M1-2CT" secondAttribute="top" id="d0L-w4-PXc"/>
+                            <constraint firstItem="xc0-M1-2CT" firstAttribute="bottom" secondItem="ewx-YR-Y0U" secondAttribute="bottom" id="nBu-io-md8"/>
+                            <constraint firstItem="ewx-YR-Y0U" firstAttribute="leading" secondItem="xc0-M1-2CT" secondAttribute="leading" id="pke-Ss-2lA"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="beY-d8-Z9k"/>

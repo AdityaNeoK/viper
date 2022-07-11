@@ -6,40 +6,28 @@
 //
 
 import Foundation
+import RealmSwift
 
 protocol InteractorProtocol{
     func didFinishGettingData(data:[Products])
+    func didSaveToRealm(name:String)
 }
 
 
 class Interactor{
     
     var interactor : InteractorProtocol?
-    //fetching data
-    
-  //  var dataPassing : recall?
 
     func fetch(){
         URLSession.shared.request(url: Urls.url, expecting: ProductData.self) { result in
             switch result{
             case .success(let user):
-      //          self.dataPassing?.fetch(user.data)
                 self.interactor?.didFinishGettingData(data: user.data)
+                self.interactor?.didSaveToRealm(name: "Chair")
             case .failure(let error):
                 print(error)
             }
         }
     }
-    
-    
-//    func getDataFromResource(){
-//
-//        let datas = "Hello"
-//        var somData = SomeData()
-//        somData.data = datas
-//
-//     //   interactor?.didFinishGettingData(data: somData.data!)
-//
-//    }
     
 }

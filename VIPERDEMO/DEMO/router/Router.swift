@@ -24,7 +24,7 @@ class Router {
          
          //init view controller's presenter object
          vc.presenter = presenter
-         
+        vc.tableView?.reloadData()
          //finally return vc
          return vc
         

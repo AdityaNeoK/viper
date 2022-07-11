@@ -6,8 +6,18 @@
 //
 
 import UIKit
+import RealmSwift
 
 class ViewController: UIViewController,PresenterProtocol {
+    func didSavedToRealm(realMSaved: String) {
+        let realM = try! Realm()
+        let prods = ProductDB()
+        prods.name = realMSaved
+        try! realM.write {
+            realM.add(prods)
+        }
+    }
+    
    
     @IBOutlet weak var tableView: UITableView!
 
@@ -16,7 +26,10 @@ class ViewController: UIViewController,PresenterProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter?.getDataFromInteractor()
-        
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.reloadData()
+        print(Realm.Configuration.defaultConfiguration.fileURL)
     }
 
     
@@ -34,6 +47,9 @@ class ViewController: UIViewController,PresenterProtocol {
         reloadTable()
     }
   
+    @IBAction func reloadBtnClicked(_ sender: UIButton) {
+        self.tableView.reloadData()
+    }
 }
 
 extension ViewController:UITableViewDataSource,UITableViewDelegate{
@@ -50,8 +66,6 @@ extension ViewController:UITableViewDataSource,UITableViewDelegate{
         cell.productName.text = products[indexPath.row].name
         cell.productProducer.text = products[indexPath.row].producer
         cell.productCost.text = "RS \(products[indexPath.row].cost)"
-     //   cell.productImage.sd_setImage(with: URL(string: products[indexPath.row].product_images), completed: nil)
-        //cell.productName.text = "Hello"
         return cell
     }
     
