@@ -14,7 +14,7 @@ protocol recall {
 
 
 struct Urls{
-    static let url = URL(string: "http://staging.php-dev.in:8844/trainingapp/api/products/getList?product_category_id=2")
+    static let url = URL(string: "http://staging.php-dev.in:8844/trainingapp/api/products/getList?product_category_id=1")
 }
 extension URLSession {
     enum CustomError: Error{

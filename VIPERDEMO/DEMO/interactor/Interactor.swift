@@ -10,7 +10,6 @@ import RealmSwift
 
 protocol InteractorProtocol{
     func didFinishGettingData(data:[Products])
-    func didSaveToRealm(name:String)
 }
 
 
@@ -23,7 +22,6 @@ class Interactor{
             switch result{
             case .success(let user):
                 self.interactor?.didFinishGettingData(data: user.data)
-                self.interactor?.didSaveToRealm(name: "Chair")
             case .failure(let error):
                 print(error)
             }

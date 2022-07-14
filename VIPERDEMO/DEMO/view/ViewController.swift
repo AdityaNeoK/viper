@@ -9,20 +9,27 @@ import UIKit
 import RealmSwift
 
 class ViewController: UIViewController,PresenterProtocol {
-    func didSavedToRealm(realMSaved: String) {
-        let realM = try! Realm()
-        let prods = ProductDB()
-        prods.name = realMSaved
-        try! realM.write {
-            realM.add(prods)
-        }
-    }
+//    func didSavedToRealm(realMSaved: String) {
+//        let realM = try! Realm()
+//        let prods = ProductDB()
+//        prods.name = realMSaved
+//        try! realM.write {
+//            realM.add(prods)
+//        }
+//    }
+    
+    
     
    
     @IBOutlet weak var tableView: UITableView!
 
     var presenter : Presenter?
-    var products = [Products]()
+    var products = [Products]() {
+        didSet{
+            print(self.products)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter?.getDataFromInteractor()
@@ -44,11 +51,33 @@ class ViewController: UIViewController,PresenterProtocol {
     func didFinishGettingDataFromPresenter(data: [Products]) {
         print(data)
         products = data
-        reloadTable()
+        let realm = try! Realm()
+        for i in data{
+            let prod = DbProduct()
+            prod.id = i.id
+            prod.name = i.name
+            prod.producer = i.producer
+            try! realm.write {
+                realm.add(prod)
+            }
+        }
     }
   
     @IBAction func reloadBtnClicked(_ sender: UIButton) {
         self.tableView.reloadData()
+        print(products)
+        //writeToRealm(data: self.products)
+    }
+    
+    func writeToRealm(data:[Products]){
+        let realm = try! Realm()
+        let prod = DbProduct()
+        for i in data{
+            prod.name = i.name
+            prod.producer = i.producer
+            prod.id = i.id
+            realm.add(prod)
+        }
     }
 }
 
@@ -68,5 +97,4 @@ extension ViewController:UITableViewDataSource,UITableViewDelegate{
         cell.productCost.text = "RS \(products[indexPath.row].cost)"
         return cell
     }
-    
 }

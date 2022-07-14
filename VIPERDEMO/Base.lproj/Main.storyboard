@@ -85,10 +85,6 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="Csf-od-xTp" id="i5W-Cg-IsT"/>
-                                    <outlet property="delegate" destination="Csf-od-xTp" id="mHt-qT-xDF"/>
-                                </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ewx-YR-Y0U">
                                 <rect key="frame" x="0.0" y="831" width="414" height="31"/>

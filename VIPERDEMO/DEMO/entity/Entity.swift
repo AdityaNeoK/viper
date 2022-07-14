@@ -25,6 +25,8 @@ struct ProductData:Codable{
 }
 
 //MODEL:
-class ProductDB:Object{
+class DbProduct:Object{
     @objc dynamic var name:String?
+    @objc dynamic var id:Int = 0
+    @objc dynamic var producer:String?
 }
